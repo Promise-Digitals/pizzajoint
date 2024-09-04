@@ -4,8 +4,9 @@ import { motion } from 'framer-motion';
 
 const Home = () => {
   return (
-    <div className="home container">
-      <motion.h2 animate={{}}>
+    <motion.div className="home container" initial={{opacity: 0}} animate={{opacity: 1}}>
+      <motion.h2 animate={{}}
+      >
         Welcome to Pizza Joint
       </motion.h2>
       <Link to="/base">
@@ -15,7 +16,7 @@ const Home = () => {
           Create Your Pizza
         </motion.button>
       </Link>
-    </div>
+    </motion.div>
   )
 }
 
