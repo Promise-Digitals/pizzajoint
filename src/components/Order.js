@@ -1,7 +1,13 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 
-const Order = ({ pizza }) => {
+const Order = ({ pizza, setShowModal }) => {
+
+  useEffect(() => {
+    setTimeout(() => {
+      setShowModal(true)
+    }, 5000)
+  }, [setShowModal])
 
   const containerVariants = {
     hidden: {
