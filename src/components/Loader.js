@@ -1,24 +1,33 @@
 import React from 'react';
-import { easeInOut, motion } from 'framer-motion';
+import { motion, useCycle } from 'framer-motion';
 
 
 const loaderVariants = {
     animationOne: {
         x: [-20, 20],
-        y: [0, -30],
+        y: [0],
         transition: {
-            x:{repeat: Infinity, duration: 1, ease: 'easeOut'},
-            y:{repeat: Infinity, duration: 0.5, ease: "easeOut"}
+            x:{repeat: Infinity, duration: 0.5, ease: 'easeOut'},
+        }
+    },
+    animationTwo: {
+        y: [0, -40],
+        x: 0,
+        transition: {
+            y: {repeat: Infinity, duration: 0.5, ease: "easeOut"}
         }
     }
 }
 
 const Loader = () => {
+    const [animation, cycleAnimation] = useCycle("animationOne", "animationTwo");
+
     return (
         <>
-            <motion.div className='loader' variants={loaderVariants} animate="animationOne">
-
+            <motion.div className='loader' variants={loaderVariants} animate={animation}>
+                
             </motion.div>
+            <button onClick={() => cycleAnimation()}>Cycle Loader</button>
         </>
     )
 }
